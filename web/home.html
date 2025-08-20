@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>website</title>
+  <style>
+    
+    body {
+      background-color: white;
+      color: white;
+      font-family: Helvetica Neue, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+  background:  linear-gradient(rgba(10,10,10,0.52), rgba(10,10,10,0.52)), url('home.jpg') no-repeat center center/cover;
+  height: 100vh;                 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 2px solid #ffd700;
+}
+
+
+/* Top bar */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(50, 50, 50, 0.8); /* darker transparent gray */
+  border-bottom: 2px solid #ffd700;  
+  border-radius: 0 0 10px 10px;      
+}
+
+/* Logo */
+.logo img {
+  height: 55px;
+  display: block;
+}
+
+.logo a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #ffd700; 
+}
+
+.logo a span {
+  margin-left: 12px;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* Navigation */
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+}
+
+nav ul li {
+  margin-left: 30px;
+}
+
+nav ul li a {
+  color: #ffffff;                  
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+  background-color: #ffd700;       
+  color: #363535;                  
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+  
+
+
+/* Hero text */
+.herotext {
+  text-align: center;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 0 20px;
+}
+
+.herotext h1 {
+  font-size: 80px;
+  margin: 0 0 20px 0;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ffd700;
+}
+
+
+
+/* Animate each word */
+.herotext h1 span {
+  opacity: 0;
+  display: inline-block;
+  animation: fadeInUp 1s forwards;
+}
+
+/* Stagger animation for each word */
+.herotext h1 span:nth-child(1) { animation-delay: 0.3s; }
+.herotext h1 span:nth-child(2) { animation-delay: 1.0s; }
+.herotext h1 span:nth-child(3) { animation-delay: 1.7s; }
+
+/* Fade-in and slide-up keyframes */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.herotext p.intro {
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  color: #f1f1f1;
+}
+
+.herotext p.tagline {
+  font-size: 20px;
+  line-height: 1.8;
+  max-width: 900px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 20px 30px;
+  border-radius: 8px;
+}
+
+         
+
+section {
+  background: linear-gradient(rgba(10,10,10,0.52), rgba(10,10,10,0.52)), url("p2.jpg") no-repeat center center/cover;
+  min-height: 700px;         /* taller for content breathing room */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* center content vertically */
+  padding: 60px 80px;        /* wider padding for balance */
+    border-bottom: 2px solid #ffd700;
+}
+
+/* Main headings */
+section h1 {
+  font-size: 52px;
+  margin-bottom: 25px;
+  text-align: center;        /* center main headings */
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #ffd700;            /* gold highlight */
+}
+
+/* Intro tagline */
+section p.intro {
+  margin-bottom: 40px;
+  font-size: 42px;
+  font-weight: 500;
+  text-align: center;
+  color: #f1f1f1;
+}
+
+/* Details text */
+section p.details {
+  margin-bottom: 40px;
+  font-size: 20px;
+  line-height: 1.8;
+  max-width: 1000px;         /* prevent text from being too wide */
+  margin-left: auto;
+  margin-right: auto;        /* center block */
+  text-align: left;          /* keep readability */
+  background: rgba(0,0,0,0.5); /* subtle background overlay */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+
+/* Section 2 styles */
+.section2 {
+  background: linear-gradient(rgba(10,10,10,0.52), rgba(10,10,10,0.52)),  url("p3.jpg") no-repeat center center/cover;
+  min-height: 700px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  padding: 60px 40px;
+  text-align: left;
+}
+
+/* Frame container */
+.section2 .content-box {
+  background: rgba(0, 0, 0, 0.55); /* semi-transparent dark */
+  border: 2px solid #ffd700;      /* gold frame */
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 1000px;
+  margin: 0 auto;                 /* center horizontally */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.6);
+}
+
+/* Headings */
+.section2 h1 {
+  font-size: 60px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #ffd700;
+}
+
+.section2 h2 {
+  font-size: 28px;
+  margin: 20px 0 15px 0;
+  color: #f1f1f1;
+  border-left: 5px solid #ffd700;
+  padding-left: 12px;
+}
+
+/* Paragraphs */
+.section2 p {
+  font-size: 20px;
+  line-height: 1.7;
+  margin-bottom: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.section3 {
+  background: linear-gradient(rgba(54,53,53,0.9), rgba(54,53,53,0.9)),
+              url("p3.jpg") no-repeat center center/cover;
+  color: white;
+  text-align: center;
+  padding: 100px 30px;
+  border-top: 3px solid #ffd700;
+  border-bottom: 3px solid #ffd700;
+}
+
+.section3 h1 {
+  font-size: 50px;
+  margin-bottom: 25px;
+  color: #ffd700;
+}
+
+.section3 p {
+  font-size: 22px;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto 40px auto;
+  color: #f1f1f1;
+}
+
+/* Button container */
+.section3 .cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Buttons */
+.section3 .cta-buttons a {
+  text-decoration: none;
+  color: #363535;
+  background: #ffd700;
+  font-weight: bold;
+  padding: 14px 28px;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.section3 .cta-buttons a:hover {
+  background: #fff;
+  color: #363535;
+  transform: translateY(-4px);
+}
+
+
+
+footer {
+  background: linear-gradient(rgba(10,10,10,0.52), rgba(10,10,10,0.52)),  url("p6.jpg") no-repeat center center/cover;
+  color: white;
+  padding: 50px 40px 20px 40px;
+  text-align: center;
+}
+
+/* Brand & Motto */
+.footer-top h1 {
+  font-size: 50px;
+  color: #ffd700;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.footer-top h2 {
+  font-size: 20px;
+  color: #f1f1f1;
+  margin-bottom: 40px;
+  font-style: italic;
+}
+
+/* Middle section with links and contact info */
+.footer-middle {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+  text-align: left;
+}
+
+/* Quick Links */
+.footer-links h3 {
+  font-size: 18px;
+  color: #ffd700;
+  margin-bottom: 15px;
+}
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+.footer-links ul li {
+  margin-bottom: 8px;
+}
+.footer-links ul li a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.footer-links ul li a:hover {
+  color: #ffd700;
+}
+
+/* Contact Info */
+.footer-contact h3 {
+  font-size: 18px;
+  color: #ffd700;
+  margin-bottom: 5px;
+}
+.footer-contact p {
+  margin: 0 0 15px;
+  color: #ddd;
+}
+
+/* Footer bottom credit line */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 215, 0, 0.5);
+  padding-top: 15px;
+  margin-top: 40px;
+}
+.footer-bottom p {
+  font-size: 15px;
+  color: #ccc;
+  margin: 0;
+}
+.footer-bottom span {
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-middle {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+  }
+  .footer-links, .footer-contact {
+    margin: auto;
+  }
+}
+
+
+
+
+
+/* ==============================
+  Scroll Fade & Slide Animation
+  - Applies to all texts with class "fade-slide"
+  - Fades in and slides up when scrolled into view
+============================== */
+
+.fade-slide {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-slide.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+    /* Apply fade-in to the entire body */
+body {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+body.loaded {
+  opacity: 1;
+}
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+<header>
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="logo">
+      <a href="home.html">
+        <img src="logo.png" alt="My Logo">
+        <span>Kefelgn Smart Solution</span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="service.html">Service</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Hero text -->
+  <div class="herotext">
+    <h1 class =fade-slide>
+      <span>Secure.</span>
+      <span>Innovate.</span>
+      <span>Thrive.</span>
+    </h1>
+    <p class="intro fade-slide">Empowering Your Safety, Elevating Your Space</p>
+    <p class="tagline fade-slide">
+      Kefelegn Smart Solution brings you the latest in security and electrical Innovation.<br>
+      We design, install and Maintain systems that protect what matters most.<br>
+      Whether at home or work, Trust us to power your peace of mind.<br>
+      Discover smarter Solutions built around you.
+    </p>
+  </div>
+</header>
+
+
+
+
+
+<section>
+  <h1 class="fade-slide">🔧 Our Expertise</h1>
+  <p class="intro fade-slide">Smart Solutions. Reliable Service.</p>
+  <p class="details fade-slide">
+    At Kefelegn Smart Solutions, we provide cutting-edge electrical and security services 
+    designed to protect, power, and elevate your space. Whether you’re upgrading a home, 
+    securing a business, or building from the ground up — we deliver expert solutions 
+    that work seamlessly and look professional.
+  </p>
+
+  <h1 class="fade-slide">🔌 Our Core Services:</h1>
+  <p class="details fade-slide">
+    ✅ <b>Electrical Installation & Maintenance</b><br>
+    From new construction wiring to system upgrades and repairs, we ensure your electrical 
+    systems are safe, efficient, and built to last.<br><br>
+
+    ✅ <b>Security Camera & Alarm Systems</b><br>
+    Protect what matters most with expertly installed CCTV, motion sensors, and alarm 
+    systems—customized for homes, offices, and commercial sites.<br><br>
+
+    ✅ <b>Smart Home Integration</b><br>
+    We bring intelligence to your living and working spaces with smart lighting, 
+    automated access control, and integrated monitoring systems.<br><br>
+
+    ✅ <b>System Upgrades & Renovations</b><br>
+    Modernize your old systems with energy-efficient upgrades and sleek new technology 
+    that meets today’s safety and performance standards.
+  </p>
+</section>
+
+
+
+<section class="section2">
+  <div class="content-box fade-slide">
+    <h1 class="fade-slide">⭐ Why Choose Us</h1>
+    <h2 class="fade-slide">Trusted. Skilled. Forward-Thinking.</h2>
+    <p class="fade-slide">
+      When it comes to security and electrical work, you can’t afford to compromise.<br>
+      At Kefelegn Smart Solutions, we combine precision, innovation, and reliability 
+      to deliver results that give you peace of mind.
+    </p>
+
+    <h2 class="fade-slide">What Sets Us Apart:</h2>
+    <p class="fade-slide">
+      🔒 <b>Expertise You Can Trust</b><br>
+      Certified professionals with hands-on experience in both residential and commercial projects.<br><br>
+
+      ⚡ <b>Modern, High-Quality Solutions</b><br>
+      We use the latest tools and technology to ensure every system is smart, safe, and future-ready.<br><br>
+
+      💰 <b>Transparent Pricing</b><br>
+      No hidden fees—just honest, competitive rates for exceptional service.<br><br>
+
+      🚀 <b>Fast, Clean & Professional Work</b><br>
+      We respect your space and your time. Expect quick turnarounds, tidy installations, and a job done right the first time.<br><br>
+
+      🤝 <b>Customer-First Approach</b><br>
+      We listen, we advise, and we deliver—tailoring every solution to meet your unique needs.
+    </p>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<section class="section3">
+  <h1 class="fade-slide">✅ Ready to Secure and Power Your Space?</h1>
+
+  <p class="fade-slide">
+    Let’s turn your vision into reality — with smart, reliable, and expertly delivered solutions.<br><br>
+    Whether you need a full electrical setup, advanced security systems, or smart home integration, 
+    Kefelegn Smart Solutions is here to help.<br><br>
+    👉 Get in touch today for a free consultation or quote.
+  </p>
+
+  <div class="cta-buttons fade-slide">
+    <a href="quote.html">🔘 Request a Quote</a>
+    <a href="tel:+25194525123112">🔘 Call: +251-94525-123-112</a>
+    <a href="https://wa.me/25194525123112" target="_blank">🔘 WhatsApp Us</a>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<footer>
+  <!-- Brand and Motto -->
+  <div class="footer-top">
+    <h1 class="fade-slide">Kefelgn Smart Solutions</h1>
+    <h2 class="fade-slide">Powering Progress • Securing Peace of Mind</h2>
+  </div>
+
+  <!-- Links & Contact -->
+  <div class="footer-middle fade-slide">
+    <div class="footer-links fade-slide">
+      <h3>🔗 Quick Links</h3>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="service.html">Service</a></li>
+        
+        <li><a href="contact.html">Contact Us</a></li>
+        
+      </ul>
+    </div>
+
+    <div class="footer-contact fade-slide">
+      <h3>📍 Address:</h3>
+      <p>Addis Ababa, Ethiopia</p>
+      <h3>📞 Phone:</h3>
+      <p>+251 XXX XXX XXX</p>
+    </div>
+  </div>
+
+  <!-- Footer bottom -->
+  <div class="footer-bottom fade-slide">
+    <p>© 2025 Kefelegn Smart Solutions. All rights reserved.</p><br>
+    <p>Website crafted with excellence by <span>BitBros</span></p>
+
+    
+
+
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  //the splash effect
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+  
+
+
+
+
+
+
+
+
+
+           
+               
+
+/* ==============================
+  Scroll Fade & Slide Animation
+  - Detects elements with "fade-slide" class
+  - Adds "visible" when element enters viewport
+============================== */
+document.addEventListener("DOMContentLoaded", function() {
+  const faders = document.querySelectorAll('.fade-slide');
+
+  const options = {
+    threshold: 0.1
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // observer.unobserve(entry.target); // optional: fade only once
+      } else {
+        entry.target.classList.remove('visible'); // fade out when scrolling up
+      }
+    });
+  }, options);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+});
+</script>
+</body>
+</html>
+
+
+
+
+

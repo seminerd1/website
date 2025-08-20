@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>website</title>
+  <style>
+    
+    body {
+      background-color: white;
+      color: white;
+      font-family: Helvetica Neue, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+   /* ===== HEADER & HERO ===== */
+header {
+  background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0,0,0,0.65)),
+              url('s1.jpg') no-repeat center center/cover;
+  height: 100vh;                 
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-bottom: 2px solid #ffd700;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Top bar */
+
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: rgba(30, 30, 30, 0.85); 
+  border-bottom: 2px solid #ffd700;  
+  border-radius: 0 0 10px 10px;
+  backdrop-filter: blur(6px);
+}
+
+    .logo img {
+      height: 55px;
+      display: block;
+    }
+
+    .logo a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: #ffd700;
+    }
+
+    .logo a span {
+      margin-left: 12px;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* Nav */
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul li {
+      margin-left: 28px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 8px 14px;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: #ffd700;
+      color: #1a1a1a;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    .active {
+      background: #ffd700;
+      color: #1a1a1a !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+
+
+
+
+/* Hero text */
+.herotext {
+  text-align: center;
+  margin: auto;
+  padding: 0 20px;
+  max-width: 1000px;
+}
+
+.herotext h1 {
+  font-size: clamp(28px, 4vw, 50px); /* smaller max size */
+  margin: 0 0 15px 0;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  line-height: 1.3;
+  text-transform: uppercase;
+  color: #ffd700;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+}
+
+/* Animation for heading */
+.herotext h1 span {
+  display: block;
+  opacity: 0;
+  animation: fadeSlideUp 1s forwards;
+}
+
+.herotext h1 span:nth-child(1) { animation-delay: 0.3s; }
+.herotext h1 span:nth-child(2) { animation-delay: 1s; }
+.herotext h1 span:nth-child(3) { animation-delay: 1.4s; }
+
+@keyframes fadeSlideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Subtitle */
+.herotext p.intro {
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 400;
+  margin: 20px auto 0;
+  color: #f1f1f1;
+  line-height: 1.8;
+  max-width: 850px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 18px 28px;
+  border-radius: 8px;
+  animation: fadeSlideUp 1s ease 2.2s forwards;
+  opacity: 0;
+}
+
+/* Call to action button */
+.cta-btn {
+  display: inline-block;
+  margin-top: 30px;
+  padding: 14px 35px;
+  background: #ffd700;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  animation: fadeSlideUp 1s ease 2.6s forwards;
+  opacity: 0;
+}
+.cta-btn:hover {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
+
+              
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Services Section */
+/* Services Section */
+.services {
+  background: linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,0.6)), 
+              url('s2.jpg') no-repeat center center/cover;
+  padding: 80px 40px;
+  text-align: center;
+  border-bottom: 2px solid #ffd700;
+}
+
+.services h2 {
+  font-size: 42px;
+  color: #ffd700;
+  margin-bottom: 15px;
+}
+
+.services-intro {
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto 50px;
+  color: #ddd;
+}
+
+/* Grid Layout: 4 on desktop, 2 on tablet, 1 on mobile */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Service Card (Glassy Effect) */
+.service-card {
+  display: block;
+  background: rgba(255, 255, 255, 0.08); /* transparent gray */
+  padding: 30px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2); /* subtle border */
+  backdrop-filter: blur(6px); /* glass effect */
+  -webkit-backdrop-filter: blur(6px);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+  background: rgba(255, 215, 0, 0.15); /* golden glow */
+}
+
+.service-card img {
+  height: 70px;
+  margin-bottom: 20px;
+}
+
+.service-card h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #ffd700;
+}
+
+.service-card p {
+  font-size: 16px;
+  color: #f1f1f1;
+  line-height: 1.6;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Why Choose Us Section */
+.why-choose-us {
+  background: linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,0.6)), 
+              url('s4.jpg') no-repeat center center/cover;
+  padding: 80px 40px;
+  text-align: center;
+  border-bottom: 2px solid #ffd700;
+}
+
+.why-choose-us h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #ffd700; /* make heading golden for contrast */
+}
+
+.why-choose-us .intro-text {
+  font-size: 18px;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  color: #ddd; /* lighter text for dark background */
+  line-height: 1.6;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 992px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Benefit Card (Transparent Glass Style) */
+.benefit {
+  background: rgba(255, 255, 255, 0.08); /* semi-transparent */
+  padding: 25px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px); /* glass blur */
+  -webkit-backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+  text-align: left;
+}
+
+.benefit:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+  background: rgba(255, 215, 0, 0.15); /* golden glow on hover */
+}
+
+.benefit .icon {
+  font-size: 26px;
+  color: #ffd700;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.benefit h3 {
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #ffd700;
+}
+
+.benefit p {
+  font-size: 16px;
+  color: #f1f1f1; /* lighter text for readability */
+  line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* Detailed Services Section */
+.detailed-services {
+  background: linear-gradient(rgba(10,10,10,0.6), rgba(10,10,10,0.6)), 
+              url('s3.jpg') no-repeat center center/cover;
+  padding: 80px 40px;
+  text-align: center;
+  border-bottom: 2px solid #ffd700;
+}
+
+.detailed-services h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+  color: #ffd700; /* golden for visibility */
+}
+
+.detailed-services .intro-text {
+  font-size: 18px;
+  max-width: 850px;
+  margin: 0 auto 50px;
+  color: #ddd; /* lighter text for dark background */
+  line-height: 1.6;
+}
+
+/* Features Grid */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+@media (max-width: 992px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Feature Card - Transparent Glass Style */
+.feature-card {
+  background: rgba(255, 255, 255, 0.08); /* semi-transparent */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 30px 20px;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+  background: rgba(255, 215, 0, 0.15); /* golden glow */
+}
+
+.feature-card img {
+  width: 60px;
+  margin-bottom: 20px;
+}
+
+.feature-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  color: #ffd700;
+}
+
+.feature-card p {
+  font-size: 16px;
+  color: #f1f1f1;
+  line-height: 1.5;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* CTA + Footer Combined Section */
+.cta-footer {
+  background: linear-gradient(rgba(10,10,10,0.52), rgba(10,10,10,0.52)), url('s5.jpg') no-repeat center center/cover;
+
+  color: white;
+  text-align: center;
+  padding: 200px 30px 150px 30px; /* taller section */
+  border-top: 3px solid #ffd700;
+}
+
+/* CTA Content */
+.cta-content h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  color: #ffd700;
+}
+.cta-content p {
+  font-size: 20px;
+  line-height: 1.8;
+  max-width: 850px;
+  margin: 0 auto 35px auto;
+  color: #f1f1f1;
+}
+.cta-btn {
+  text-decoration: none;
+  color: #363535;
+  background: #ffd700;
+  font-weight: bold;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  display: inline-block;
+  margin-bottom: 70px; /* 👈 extra breathing space before footer */
+}
+.cta-btn:hover {
+  background: #fff;
+  color: #363535;
+  transform: translateY(-4px);
+}
+
+/* Footer Content */
+.footer-top h1 {
+  font-size: 22px;   /* smaller */
+  color: #ffd700;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.footer-top h2 {
+  font-size: 12px;   /* smaller */
+  color: #f1f1f1;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+.footer-contact p {
+  margin: 0 0 15px;
+  font-size: 12px;   /* smaller */
+  color: #ddd;
+}
+.footer-bottom {
+  border-top: 1px solid rgba(255, 215, 0, 0.5);
+  padding-top: 8px;
+  margin-top: 15px;
+}
+.footer-bottom p {
+  font-size: 11px;   /* smaller */
+  color: #ccc;
+  margin: 4px 0;
+}
+.footer-bottom span {
+  font-weight: bold;
+  color: #ffd700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cta-content h2 {
+    font-size: 32px;
+  }
+  .cta-content p {
+    font-size: 18px;
+  }
+  .footer-top h1 {
+    font-size: 18px;
+  }
+  .footer-contact p {
+    font-size: 11px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /* Apply fade-in to the entire body */
+body {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+body.loaded {
+  opacity: 1;
+}
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+<header>
+  <!-- Top bar -->
+  <div class="top-bar">
+    <div class="logo">
+      <a href="home.html">
+        <img src="logo.png" alt="My Logo">
+        <span>Kefelgn Smart Solution</span>
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="About.html">About</a></li>
+        <li><a href="service.html"class="active">Service</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Hero text -->
+  <div class="herotext">
+    <h1>
+      <span>Empowering Your Space</span>
+      <span>Securing Your Future</span>
+      <span>Thrive With Us</span>
+    </h1>
+    <p class="intro">
+      Peace of mind is beyond everything for human beings.  
+      Kefelgn Smart Solutions delivers cutting-edge smart security systems, high-quality surveillance cameras,  
+      and expert electrical installation services for both residential and commercial spaces.
+    </p>
+    <a href="contact.html" class="cta-btn">Get Started</a>
+  </div>
+</header>
+
+
+
+
+
+
+
+
+
+
+
+<section class="services">
+  <h2>Our Services</h2>
+  <p class="services-intro">
+    We provide professional electrical and security solutions that make your spaces safer, smarter, and more efficient.
+  </p>
+
+  <div class="services-grid">
+    <!-- Row 1 -->
+    <a href="contact.html" class="service-card">
+      <img src="s21.jpg" alt="Electronic Maintenance">
+      <h3>Electronic Maintenance</h3>
+      <p>Expert maintenance services to keep your systems running smoothly and reliably.</p>
+    </a>
+
+    <a href="contact.html" class="service-card">
+      <img src="s22.jpg" alt="Electrical Installation">
+      <h3>Electrical Installation</h3>
+      <p>Safe and professional electrical installations for residential and commercial spaces.</p>
+    </a>
+
+    <a href="contact.html" class="service-card">
+      <img src="s23.jpg" alt="EV Charger Installation">
+      <h3>EV Charger Installation</h3>
+      <p>Reliable installation of EV chargers to power the future of mobility.</p>
+    </a>
+
+    <a href="contact.html" class="service-card">
+      <img src="s24.jpg" alt="Security Camera Installation">
+      <h3>Security Camera Installation</h3>
+      <p>High-quality CCTV and IP cameras to protect your property 24/7.</p>
+    </a>
+
+    <!-- Row 2 -->
+    <a href="contact.html" class="service-card">
+      <img src="s25.jpg" alt="Access Control System">
+      <h3>Access Control Systems</h3>
+      <p>Secure access solutions to manage who enters your facilities with ease.</p>
+    </a>
+
+    <a href="contact.html" class="service-card">
+      <img src="s26.jpg" alt="Intrusion and Alarm Systems">
+      <h3>Intrusion & Alarm Systems</h3>
+      <p>Advanced alarm systems to instantly alert you of unauthorized activity.</p>
+    </a>
+
+    <a href="contact.html" class="service-card">
+      <img src="s27.jpg" alt="Electronic Device Installation">
+      <h3>Electronic Device Installation</h3>
+      <p>Precision installation of electronic devices to boost efficiency.</p>
+    </a>
+
+    <a href="contact.html" class="service-card">
+      <img src="s28.jpg" alt="Smart Home Solutions">
+      <h3>Smart Home Solutions</h3>
+      <p>Smart automation for lighting, security, and comfort at your fingertips.</p>
+    </a>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="why-choose-us">
+  <h2>Why Choose Kefelgn Smart Solutions?</h2>
+  <p class="intro-text">
+    Choosing the right partner for your electrical and security needs is critical. 
+    Here’s why hundreds of customers trust <strong>Kefelgn Smart Solutions</strong>:
+  </p>
+
+  <div class="benefits-grid">
+    <div class="benefit">
+      <span class="icon">✅</span>
+      <h3>Reliable Installation</h3>
+      <p>We use industry best practices and certified equipment, ensuring every project is done right the first time.</p>
+    </div>
+
+    <div class="benefit">
+      <span class="icon">✅</span>
+      <h3>Affordable Pricing</h3>
+      <p>Premium service doesn’t have to mean premium pricing — we provide transparent, fair quotes with no hidden fees.</p>
+    </div>
+
+    <div class="benefit">
+      <span class="icon">✅</span>
+      <h3>24/7 Support</h3>
+      <p>Round-the-clock technical support and rapid response when you need us most — your safety is never on pause.</p>
+    </div>
+
+    <div class="benefit">
+      <span class="icon">✅</span>
+      <h3>Cutting-Edge Technology</h3>
+      <p>We deliver the latest in smart security, automation, and energy solutions to future-proof your investment.</p>
+    </div>
+
+    <div class="benefit">
+      <span class="icon">✅</span>
+      <h3>Experienced Team</h3>
+      <p>Our licensed professionals bring years of expertise across residential, commercial, and industrial projects.</p>
+    </div>
+
+    <div class="benefit">
+      <span class="icon">✅</span>
+      <h3>Customer Satisfaction</h3>
+      <p>Our success is measured by your peace of mind — we go the extra mile to exceed your expectations.</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<section class="detailed-services">
+  <h2>Our Core Expertise</h2>
+  <p class="intro-text">
+    At <strong>Kefelgn Smart Solutions</strong>, we provide comprehensive security and electrical solutions 
+    tailored for residential, commercial, and industrial needs.
+  </p>
+
+  <div class="features-grid">
+    <!-- Security Systems -->
+    <div class="feature-card">
+      <img src="s25.jpg" alt="Security Icon">
+      <h3>Security Systems</h3>
+      <p>
+        From access control to intrusion alarms, our smart security systems keep your property safe 
+        and give you complete peace of mind.
+      </p>
+    </div>
+
+    <!-- Surveillance Cameras -->
+    <div class="feature-card">
+      <img src="s24.jpg" alt="Camera Icon">
+      <h3>Surveillance Cameras</h3>
+      <p>
+        High-definition CCTV and smart monitoring solutions that let you keep an eye on your space 
+        anytime, anywhere.
+      </p>
+    </div>
+
+    <!-- Smart Home Solutions -->
+    <div class="feature-card">
+      <img src="s28.jpg" alt="Smart Home Icon">
+      <h3>Smart Home Solutions</h3>
+      <p>
+        Automate lighting, climate, and security with cutting-edge smart home technology, 
+        designed for convenience and energy efficiency.
+      </p>
+    </div>
+
+    <!-- Electrical Installations -->
+    <div class="feature-card">
+      <img src="s27.jpg" alt="Electrical Icon">
+      <h3>Electrical Installations</h3>
+      <p>
+        From residential wiring to commercial power setups, we deliver safe, reliable, 
+        and future-proof electrical installations.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<!-- CTA + Footer Combined -->
+<section class="cta-footer">
+  
+  
+  <div class="cta-content">
+    <h2>Let’s Secure Your Space Today</h2>
+    <p>
+      Your safety and comfort deserve the best. Partner with 
+      <strong>Kefelgn Smart Solutions</strong> for reliable security, smart home, 
+      and electrical services tailored to your needs.
+    </p>
+    <a href="contact.html" class="cta-btn">Request a Free Quote</a>
+  </div>
+<br><br><br><br><br>
+  <div class="footer-top">
+    <h1>Kefelgn Smart Solutions</h1>
+    <h2>Powering Progress • Securing Peace of Mind</h2>
+  </div>
+
+  <div class="footer-contact">
+    <p>📍 Addis Ababa, Ethiopia &nbsp; | &nbsp; 📞 +251 XXX XXX XXX</p>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 Kefelegn Smart Solutions. All rights reserved.</p>
+    <p>Website crafted with excellence by <span>BitBros</span></p>
+  </div>
+  
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  //the splash effect
+  window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+  });
+  
+
+
+
+
+
+
+
+
+
+           
+               
+
+/* ==============================
+  Scroll Fade & Slide Animation
+  - Detects elements with "fade-slide" class
+  - Adds "visible" when element enters viewport
+============================== */
+document.addEventListener("DOMContentLoaded", function() {
+  const faders = document.querySelectorAll('.fade-slide');
+
+  const options = {
+    threshold: 0.1
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // observer.unobserve(entry.target); // optional: fade only once
+      } else {
+        entry.target.classList.remove('visible'); // fade out when scrolling up
+      }
+    });
+  }, options);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+});
+</script>
+</body>
+</html>
+
+
+
+
+

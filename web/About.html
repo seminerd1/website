@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kefelgn Smart Solution</title>
+  <style>
+    /* ========== GLOBAL STYLES ========== */
+    :root {
+      --primary: #ffd700;
+      --secondary: #1e3a8a;
+      --dark: #0f172a;
+      --light: #f8fafc;
+      --gray: #363535;
+      --transition: all 0.4s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: white;
+      color: white;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      overflow-x: hidden;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 80px 40px;
+      background-size: cover;
+      background-position: center;
+      border-bottom: 2px solid var(--primary);
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: 0.5px;
+    }
+
+    /* ========== HEADER STYLES ========== */
+    header {
+      background: var(--gray) url("a1.jpg") no-repeat center center/cover;
+      height: 100vh;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background overlay */
+    header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.7) 100%);
+      z-index: 1;
+    }
+
+    /* Top bar */
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(50, 50, 50, 0.8);
+      border-bottom: 2px solid var(--primary);
+       border-radius: 0 0 10px 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Logo */
+    .logo img {
+      height: 55px;
+      display: block;
+      transition: var(--transition);
+    }
+
+    .logo a {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .logo a:hover {
+      transform: scale(1.05);
+    }
+
+    .logo a span {
+      margin-left: 12px;
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    /* Navigation */
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+    }
+
+    nav ul li {
+      margin-left: 30px;
+    }
+
+    nav ul li a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 8px 12px;
+      border-radius: 5px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: var(--transition);
+      transform: translateX(-50%);
+    }
+    .active {
+      background: #ffd700;
+      color: #1a1a1a !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    nav ul li a:hover {
+      color: var(--primary);
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero text */
+    .herotext {
+      text-align: center;
+      margin: auto;
+      padding: 0 20px;
+      max-width: 900px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .herotext h1 {
+      font-size: clamp(3rem, 8vw, 5rem);
+      margin: 0 0 20px 0;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+
+    .herotext h2 {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      color: var(--primary);
+      margin: 30px 0 15px;
+    }
+
+    .herotext p {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      max-width: 800px;
+      margin: 0 auto 25px;
+    }
+
+    .herotext p.intro {
+      font-size: clamp(1.5rem, 3vw, 1.75rem);
+      font-weight: 500;
+      margin-bottom: 30px;
+      color: #f1f1f1;
+    }
+
+    .herotext p.tagline {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 20px 30px;
+      border-radius: 8px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* Animate each word */
+    .herotext h1 span {
+      opacity: 0;
+      display: inline-block;
+      animation: fadeInUp 0.8s forwards;
+      will-change: transform, opacity;
+    }
+
+    /* Stagger animation for each word */
+    .herotext h1 span:nth-child(1) { animation-delay: 0.3s; }
+    .herotext h1 span:nth-child(2) { animation-delay: 0.6s; }
+    .herotext h1 span:nth-child(3) { animation-delay: 1.0s; }
+
+    /* Fade-in and slide-up keyframes */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========== CONTENT SECTIONS ========== */
+    .section-story {
+      background: linear-gradient(rgba(1, 15, 18, 0.7), rgba(0,0,0,0.7)),
+                  url("a2.jpg") no-repeat center center/cover;
+    }
+
+    .content-box {
+      background: rgba(0,0,0,0.7);
+      border: 2px solid var(--primary);
+      border-radius: 12px;
+      padding: 60px 50px;
+      max-width: 1000px;
+      margin: auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .section-story h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+    }
+
+    .section-story p.intro {
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 40px;
+      font-weight: 500;
+    }
+
+    .section-story p.details {
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      line-height: 1.8;
+      margin-bottom: 25px;
+      text-align: center;
+      background: rgba(0,0,0,0.5);
+      padding: 25px;
+      border-radius: 8px;
+      font-weight: 400;
+    }
+
+    /* Section 2 & 3 - Experience & Team */
+    .section2 {
+      background: linear-gradient(rgba(1, 15, 18, 0.7), rgba(0,0,0,0.7)), url("a33.jpg") no-repeat center center/cover;
+    }
+
+    .section3 {
+      background: linear-gradient(rgba(1, 15, 18, 0.7), rgba(0,0,0,0.7)), url("a8.jpg") no-repeat center center/cover;
+    }
+
+    .content-wrapper {
+      display: flex;
+      gap: 60px;
+      max-width: 1200px;
+      width: 100%;
+      align-items: center;
+    }
+
+    .content-left, .content-right {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .content-left p, .content-right p {
+      background: rgba(0,0,0,0.7);
+      padding: 35px;
+      border-radius: 12px;
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .section2 .content-right h1, 
+    .section3 .content-left h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .section2 .content-right h2, 
+    .section3 .content-left h2 {
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      color: #f1f1f1;
+      padding: 0 12px;
+      font-weight: 500;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section2 .content-right h2::after {
+      content: '';
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 100%;
+      width: 5px;
+      background: var(--primary);
+    }
+
+    .section3 .content-left h2::before {
+      content: '';
+      position: absolute;
+      left: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 100%;
+      width: 5px;
+      background: var(--primary);
+    }
+
+    /* ========== FOOTER STYLES ========== */
+    footer {
+      background: linear-gradient(rgba(2, 30, 44, 0.95), rgba(13, 66, 79, 0.95)), url("a009.jpg") no-repeat center center/cover;
+      color: white;
+      padding: 80px 40px 30px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1;
+    }
+
+    .footer-top, 
+    .footer-middle, 
+    .footer-bottom {
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-top h1 {
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      color: var(--primary);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .footer-top h2 {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      color: #f1f1f1;
+      margin-bottom: 50px;
+      font-style: italic;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer-middle {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 60px;
+      max-width: 1200px;
+      margin: 40px auto;
+      text-align: left;
+    }
+
+    .footer-links, .footer-contact {
+      flex: 1;
+      min-width: 250px;
+      max-width: 350px;
+    }
+
+    .footer-links h3, 
+    .footer-contact h3 {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-links h3::after, 
+    .footer-contact h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--primary);
+    }
+
+    .footer-links ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-links ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links ul li a {
+      color: #ddd;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1.1rem;
+      display: inline-block;
+      padding: 5px 0;
+    }
+
+    .footer-links ul li a:hover {
+      color: var(--primary);
+      transform: translateX(5px);
+    }
+
+    .footer-contact p {
+      margin: 0 0 20px;
+      color: #ddd;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-contact p::before {
+      content: '•';
+      color: var(--primary);
+      margin-right: 10px;
+      font-size: 1.5rem;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 215, 0, 0.3);
+      padding-top: 25px;
+      margin-top: 50px;
+    }
+
+    .footer-bottom p {
+      font-size: 1rem;
+      color: #ccc;
+      margin: 10px 0;
+    }
+
+    .footer-bottom span {
+      font-weight: bold;
+      color: var(--primary);
+    }
+
+    /* ========== ANIMATIONS & EFFECTS ========== */
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.22, 0.61, 0.36, 1);
+      will-change: transform, opacity;
+    }
+
+    .fade-slide.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== RESPONSIVE DESIGN ========== */
+    @media (max-width: 992px) {
+      .top-bar {
+        padding: 15px 20px;
+      }
+      
+      .logo a span {
+        font-size: 18px;
+      }
+      
+      nav ul li {
+        margin-left: 15px;
+      }
+      
+      .content-wrapper {
+        flex-direction: column;
+        gap: 40px;
+      }
+      
+      .section2 .content-wrapper {
+        flex-direction: column-reverse;
+      }
+      
+      .section2 .content-right h2::after,
+      .section3 .content-left h2::before {
+        display: none;
+      }
+      
+      .section2 .content-right h1,
+      .section2 .content-right h2,
+      .section3 .content-left h1,
+      .section3 .content-left h2 {
+        text-align: center;
+      }
+      
+      .footer-middle {
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .top-bar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+      }
+      
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      nav ul li {
+        margin: 5px 10px;
+      }
+      
+      .content-box {
+        padding: 40px 25px;
+      }
+      
+      .section-story p.details {
+        padding: 20px 15px;
+      }
+      
+      .footer-middle {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .footer-links h3::after,
+      .footer-contact h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      .footer-links ul li a {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .herotext h1 span {
+        display: block;
+      }
+      
+      .herotext .tagline {
+        padding: 15px;
+      }
+      
+      section {
+        padding: 60px 20px;
+      }
+    }
+  </style>
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="top-bar">
+      <div class="logo">
+        <a href="home.html">
+          <img src="logo.png" alt="Kefelgn Smart Solution Logo">
+          <span>Kefelgn Smart Solution</span>
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a href="About.html"class="active">About</a></li>
+          <li><a href="service.html" >Service</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="herotext">
+      <h1 class="fade-slide">
+        <span>Mission</span>
+        <span>&</span>
+        <span>Vision.</span>
+      </h1>
+      <p class="intro fade-slide">Driven by Purpose. Powered by Innovation.</p>
+      <p class="tagline fade-slide">
+        At Kefelegn Smart Solutions, we exist to make homes and businesses safer, smarter, and more reliable.
+      </p>
+      
+      <h2 class="mid fade-slide">Our Mission</h2>
+      <p class="tagline fade-slide">
+        To deliver cutting-edge electrical and security solutions with a commitment to excellence, reliability, and customer satisfaction.
+      </p>
+      
+      <h2 class="mid fade-slide">Our Vision</h2>
+      <p class="tagline fade-slide">
+        To be a leading name in Ethiopia for smart electrical systems and advanced security technologies — empowering people to live and work with peace of mind.
+      </p>
+    </div>
+  </header>
+
+  <!-- Our Story Section -->
+  <section class="section-story">
+    <div class="container">
+      <div class="content-box">
+        <h1 class="fade-slide">Our Story</h1>
+        <p class="intro fade-slide">Our Journey: From a Spark to a Smart Revolution</p>
+
+        <p class="details fade-slide">
+          Kefelegn Smart Solutions began with one clear goal: to transform everyday spaces into safe, efficient, and smart environments.
+        </p>
+
+        <p class="details fade-slide">
+          Founded by passionate engineers and certified electricians, our company has grown through dedication, word-of-mouth trust, and a belief in doing things right the first time.
+        </p>
+
+        <p class="details fade-slide">
+          What started with small installations is now a recognized service provider for homes, offices, and commercial properties across Ethiopia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="section2">
+    <div class="container">
+      <div class="content-wrapper fade-slide">
+        <div class="content-left">
+          <p>
+            🛠️ <b>Years of Field Experience</b><br>
+            From new builds to complex upgrades—we've seen it all.<br><br>
+
+            📜 <b>Certified Technicians</b><br>
+            Trained in electrical systems, CCTV, alarms, and smart integrations.<br><br>
+
+            💰 <b>Transparent Pricing</b><br>
+            No hidden fees—just honest, competitive rates for exceptional service.<br><br>
+
+            🏢 <b>Trusted by Businesses & Homes</b><br>
+            Serving clients across Addis Ababa and beyond.<br><br>
+
+            🧰 <b>Technology That Works</b><br>
+            We use only proven, modern solutions tailored to your needs.
+          </p>
+        </div>
+        <div class="content-right">
+          <h1>Experience & Certifications</h1>
+          <h2>Built on Experience. Certified for Excellence.</h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="section3">
+    <div class="container">
+      <div class="content-wrapper fade-slide">
+        <div class="content-left">
+          <h1>Meet the Team</h1>
+          <h2>The Experts Behind the Power.</h2>
+        </div>
+        <div class="content-right">
+          <p>
+            Our team is the heartbeat of every successful project.<br><br>
+            Certified technicians, skilled engineers, and a responsive support crew—all working with one purpose: to deliver results you can rely on.<br><br>
+            We combine technical excellence with a customer-first approach to make every job fast, clean, and future-proof.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <h1 class="fade-slide">✅ Final Call-to-Action</h1>
+        <h2 class="fade-slide">Powering Progress • Securing Peace of Mind</h2>
+        <p class="fade-slide">Let's Build Something Smart — Together. Whether you're starting fresh or upgrading your systems, we're ready to help. Let's design a space that's safer, smarter, and more powerful—just for you.</p>
+      </div>
+
+      <div class="footer-middle">
+        <div class="footer-links fade-slide">
+          <h3>🔗 Quick Links</h3>
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="service.html">Service</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-contact fade-slide">
+          <h3>📍 Contact Information</h3>
+          <p>Addis Ababa, Ethiopia</p>
+          <p>+251 XXX XXX XXX</p>
+          <p>kefelegnsmartsoulution@gmail.com</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom fade-slide">
+        <p>© 2025 Kefelegn Smart Solutions. All rights reserved.</p>
+        <p>Website crafted with excellence by <span>BitBros</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Splash effect on load
+    window.addEventListener('load', () => {
+      document.body.classList.add('loaded');
+      
+      // Initialize scroll animations after page loads
+      setTimeout(initScrollAnimations, 500);
+    });
+
+    // Scroll animations
+    function initScrollAnimations() {
+      const faders = document.querySelectorAll('.fade-slide');
+      const options = {
+        threshold: 0.2,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Keep observing for when scrolling back up
+          } else {
+            // Optional: remove class when out of view
+            // entry.target.classList.remove('visible');
+          }
+        });
+      }, options);
+
+      faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+      });
+    }
+
+    // Performance optimization - delay non-critical animations
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'interactive') {
+        // Preload images
+        const images = ['a1.jpg', 'a2.jpg', 'a33.jpg', 'a8.jpg', 'a009.jpg'];
+        images.forEach(img => {
+          const image = new Image();
+          image.src = img;
+        });
+      }
+    });
+  </script>
+</body>
+</html>
